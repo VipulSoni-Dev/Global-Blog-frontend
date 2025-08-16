@@ -2,7 +2,7 @@
 title: 'Hurricane Erin 2025  Tracking the Path, Models, and Impact'
 blogName: 'hurricane-erin-2025'
 description: Detailed analysis of Hurricane Erin's path, projected impacts, and spaghetti models, with updates from the National Hurricane Center.
-pubDate: 2025-08-16
+pubDate: 2025-08-16T13:30:00+05:30
 tags: [hurricane erin, tropical storm erin, hurricane erin 2025, hurricane erin path, hurricane, noaa]
 lang: en
 heroImage: '../../assets/hurricane-erin-2025.png'

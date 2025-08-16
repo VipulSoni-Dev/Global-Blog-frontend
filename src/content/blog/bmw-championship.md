@@ -2,7 +2,7 @@
 title: BMW Championship – Live Update & Leaderboard
 blogName: 'bmw-championship-update'
 description: 'Live leaderboard, player highlights, and storylines from the 2025 BMW Championship at Caves Valley.'
-pubDate: 2025-08-16
+pubDate: 2025-08-15T13:30:00+05:30
 tags: [“bmw leaderboard”, “robert macintyre”, “championship”, “bmw championship leaderboard”]
 lang: en
 heroImage: '../../assets/bmw-championship-2025.png'
@@ -65,7 +65,3 @@ heroImage: '../../assets/bmw-championship-2025.png'
 
 Let me know if you'd like to embed a dynamic leaderboard iframe or add polls to the page—happy to help you make it even more interactive!
 
-
-::contentReference[oaicite:20]{index=20}
-
-::contentReference[oaicite:21]{index=21}
