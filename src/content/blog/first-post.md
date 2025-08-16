@@ -5,7 +5,9 @@ description: From AI-powered coding assistants to quantum breakthroughs, here’
 pubDate: 2025-08-15T13:30:00+05:30
 tags: [technology, AI, future]
 lang: en
-heroImage: '../../assets/tech-trends-2025_org.png'
+heroImage: 
+    src: '../../assets/tech-trends-2025_org.png'
+    alt: 'Tech Trends to Watch in 2025'
 # heroImage: '../../assets/a.png'
 # heroImage: '../../assets/blog-placeholder-3.jpg'
 # heroImage: ../../assets/a.jpg

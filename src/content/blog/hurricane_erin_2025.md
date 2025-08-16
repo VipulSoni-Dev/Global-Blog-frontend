@@ -5,7 +5,9 @@ description: Detailed analysis of Hurricane Erin's path, projected impacts, and 
 pubDate: 2025-08-16T13:30:00+05:30
 tags: [hurricane erin, tropical storm erin, hurricane erin 2025, hurricane erin path, hurricane, noaa]
 lang: en
-heroImage: '../../assets/hurricane-erin-2025.png'
+heroImage: 
+    src: '../../assets/hurricane-erin-2025.png'
+    alt: 'Hurricane Erin 2025'
 ---
 ### 🌪 Latest Updates on Hurricane Erin
 

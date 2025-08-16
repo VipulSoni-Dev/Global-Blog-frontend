@@ -5,7 +5,9 @@ description: Debunking common misconceptions about achieving financial independe
 pubDate: '2025-08-10T13:30:00+05:30'
 tags: [finance, personal-growth, money]
 lang: en
-heroImage: ../../assets/myth5.png
+heroImage: 
+    src: '../../assets/myth5.png'
+    alt: '5 Myths About Financial Freedom'
 ---
 
 Many people dream of financial freedom, but misconceptions can hold them back.

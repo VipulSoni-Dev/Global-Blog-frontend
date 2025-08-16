@@ -3,12 +3,14 @@ title: BMW Championship – Live Update & Leaderboard
 blogName: 'bmw-championship-update'
 description: 'Live leaderboard, player highlights, and storylines from the 2025 BMW Championship at Caves Valley.'
 pubDate: 2025-08-16T13:30:00+05:30
-tags: [“bmw leaderboard”, “robert macintyre”, “championship”, “bmw championship leaderboard”]
+tags: ["bmw leaderboard", "robert macintyre", "championship", "bmw championship leaderboard"]
 lang: en
-heroImage: '../../assets/bmw-championship-2025.png'
+heroImage: 
+    src: '../../assets/bmw-championship-2025.png'
+    alt: 'BMW Championship – Live Update & Leaderboard'
 ---
 
-# BMW Championship 2025 Leaderboard – Robert MacIntyre Extends Lead After Round 2
+### BMW Championship 2025 Leaderboard – Robert MacIntyre Extends Lead After Round 2
 
 The [**BMW Championship 2025**](https://www.pgatour.com/tournaments/bmw-championship.html) has taken the PGA Tour spotlight, with **Robert MacIntyre** putting on a golf masterclass. After two rounds, he leads the [**BMW Championship leaderboard**](https://www.pgatour.com/leaderboard) by an impressive five shots, putting himself in prime position for victory.
 
@@ -54,20 +56,16 @@ Want to learn more about his season? Check out [Robert MacIntyre’s PGA Tour pr
 
 ---
 
-##  Want to Explore More?
+## 🔗 Want to Explore More?
 
 - **Watch highlights or replays**: PGA Tour Live (via ESPN+), NBC / Sky Sports broadcast.  
-- **Check the live leaderboard** with up-to-date scoring and hole-by-hole action: [PGA Tour Live Leaderboard]:contentReference[oaicite:16]{index=16} or [CBS Sports live leaderboard]:contentReference[oaicite:17]{index=17}  
-- For tournament history, stats, and past winners: Visit the [official BMW Championship site]:contentReference[oaicite:18]{index=18} or its [Wikipedia page]:contentReference[oaicite:19]{index=19}.
+- **Check the live leaderboard**: [PGA Tour Live Leaderboard](https://www.pgatour.com/leaderboard) or [CBS Sports Live Leaderboard](https://www.cbssports.com/golf/leaderboard/pga-tour/bmw-championship/).  
+- **Tournament history, stats, and past winners**: [Official BMW Championship site](https://bmwchampionship.com) or [BMW Championship Wikipedia page](https://en.wikipedia.org/wiki/BMW_Championship_(PGA_Tour)).
 
 ---
 
 > **Interactive Tip:**  
-> Use this roadmap:
-> - **Track MacIntyre’s lead trend**: Keep an eye on whether he reaches –20+ by Sunday.  
-> - **Spot a mover**: Watch for Aberg or Matsuyama making a Sunday charge.  
+> - **Track MacIntyre’s lead trend**: Watch if he pushes past –20 by Sunday.  
+> - **Spot a mover**: Keep an eye on Aberg or Matsuyama making a late charge.  
 > - **Predictions?** Drop your guess in the comments—who’ll still be in contention after Round 3?
-
-Let me know if you'd like to embed a dynamic leaderboard iframe or add polls to the page—happy to help you make it even more interactive!
-
 

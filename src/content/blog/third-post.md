@@ -5,7 +5,9 @@ description: Personalized learning, smart grading, and the rise of AI tutors.
 pubDate: '2025-08-05T13:30:00+05:30'
 tags: [AI, education, innovation]
 lang: en
-heroImage: ../../assets/ai-education.png
+heroImage: 
+    src: '../../assets/ai-education.png'
+    alt: 'How AI is Transforming Education'
 ---
 
 Artificial Intelligence is reshaping classrooms and learning experiences.

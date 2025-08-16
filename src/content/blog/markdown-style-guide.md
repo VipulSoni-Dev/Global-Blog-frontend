@@ -3,7 +3,9 @@ title: 'Markdown Style Guide'
 blogName: 'markdown-style-guide'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jun 19 2024'
-heroImage: '../../assets/blog-placeholder-1.jpg'
+heroImage: 
+    src: '../../assets/blog-placeholder-1.jpg'
+    alt: 'Markdown Style Guide'
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
