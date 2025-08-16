@@ -2,7 +2,7 @@
 title: How AI is Transforming Education
 blogName: 'third-post'
 description: Personalized learning, smart grading, and the rise of AI tutors.
-pubDate: 2025-08-05T13:30:00+05:30
+pubDate: '2025-08-05T13:30:00+05:30'
 tags: [AI, education, innovation]
 lang: en
 heroImage: ../../assets/ai-education.png

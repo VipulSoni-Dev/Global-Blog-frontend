@@ -2,7 +2,7 @@
 title: 5 Myths About Financial Freedom
 blogName: 'second-post'
 description: Debunking common misconceptions about achieving financial independence.
-pubDate: 2025-08-10T13:30:00+05:30
+pubDate: '2025-08-10T13:30:00+05:30'
 tags: [finance, personal-growth, money]
 lang: en
 heroImage: ../../assets/myth5.png

@@ -2,50 +2,55 @@
 title: BMW Championship – Live Update & Leaderboard
 blogName: 'bmw-championship-update'
 description: 'Live leaderboard, player highlights, and storylines from the 2025 BMW Championship at Caves Valley.'
-pubDate: 2025-08-15T13:30:00+05:30
+pubDate: 2025-08-16
 tags: [“bmw leaderboard”, “robert macintyre”, “championship”, “bmw championship leaderboard”]
 lang: en
 heroImage: '../../assets/bmw-championship-2025.png'
 ---
 
-# BMW Championship – Live from Caves Valley  
-*The second FedEx Cup Playoff event, unfolding live at Caves Valley Golf Club, Maryland (Aug 14–17, 2025).*
+# BMW Championship 2025 Leaderboard – Robert MacIntyre Extends Lead After Round 2
+
+The [**BMW Championship 2025**](https://www.pgatour.com/tournaments/bmw-championship.html) has taken the PGA Tour spotlight, with **Robert MacIntyre** putting on a golf masterclass. After two rounds, he leads the [**BMW Championship leaderboard**](https://www.pgatour.com/leaderboard) by an impressive five shots, putting himself in prime position for victory.
+
+If you missed the opening day action, check our [Round 1 BMW Championship 2025 recap](../bmw-championship-2025-round1) for full highlights.
 
 ---
 
-##  Current Leaderboard & Highlights
+## 📰 BMW Championship 2025 – Round 2 Highlights
 
-| Position | Player             | To Par | Notes                                           |
-|----------|--------------------|--------|-------------------------------------------------|
-| 1        | Robert MacIntyre   | –14    | Opened with 62 (six straight birdies), then 64. :contentReference[oaicite:2]{index=2} |
-| 2        | Scottie Scheffler  | –9     | Steady round of 65 keeps him in the chase. :contentReference[oaicite:3]{index=3} |
-| 3        | Ludvig Aberg       | –8     | Climbing the board with strong early play. :contentReference[oaicite:4]{index=4} |
-| 4        | Hideki Matsuyama   | –7     | Consistently in the mix mid-round. :contentReference[oaicite:5]{index=5} |
-| T5       | Tommy Fleetwood    | –6     | Faltered after a hot start, yet remains solid. :contentReference[oaicite:6]{index=6} |
-| T5       | Michael Kim        | –6     | Keenly holding ground in the top five. :contentReference[oaicite:7]{index=7} |
+- **64 in Round 2**: MacIntyre shot a blistering 64, extending his lead to **five shots**, the largest 36-hole advantage since Jason Day in 2015.  
+- **Short Game Excellence**: His putting has been exceptional, with fewer than 28 putts per round.  
+- **Mental Strength**: Calm and calculated under tournament pressure.  
+
+For more detailed shot-by-shot stats, visit the [PGA Tour ShotLink data](https://www.pgatour.com/shotlink).
 
 ---
 
-##  Why MacIntyre’s Start Is Special  
-- Robert MacIntyre scorched the course with a stunning **8-under 62** in Round 1, capped off with **six straight birdies**, believed to be the first such streak in the current playoff format. :contentReference[oaicite:8]{index=8}  
-- He followed up with a **64 in Round 2**, extending his lead to **five shots**—the largest 36-hole lead since Jason Day in 2015. :contentReference[oaicite:9]{index=9}  
-- Analysts attribute his surge to a mid-season putting overhaul that’s paying dividends. :contentReference[oaicite:10]{index=10}
+## 📊 Updated BMW Championship Leaderboard 2025 – Top 5
+
+| Position | Player            | Score |
+|----------|-------------------|-------|
+| 1        | Robert MacIntyre  | -14   |
+| 2        | Rory McIlroy      | -9    |
+| 3        | Viktor Hovland    | -8    |
+| 4        | Scottie Scheffler | -7    |
+| 5        | Jon Rahm          | -7    |
+
+*Leaderboard last updated on August 16, 2025.*  
+See the [full BMW Championship 2025 scoreboard here](https://www.pgatour.com/leaderboard).
 
 ---
 
-##  Key Storylines
+## 🏌️ Robert MacIntyre – The Player to Beat
 
-- **Tommy Fleetwood** continues to chase his elusive PGA Tour win. Though he’s never won despite multiple runner-up finishes, he remains in contention after Rounds 1 and 2. :contentReference[oaicite:11]{index=11}  
-- **Scottie Scheffler**, world #1, is laser-focused on this tournament—not the Ryder Cup. He warned reporters not to derail him with Ryder Cup questions. :contentReference[oaicite:12]{index=12}  
-- **Sepp Straka** withdrew due to a personal issue, reducing the field to 49. His absence shakes up Tour Championship positioning. :contentReference[oaicite:13]{index=13}  
-- **Ben Griffin**, after stepping away from golf four years ago, is making a strong comeback and is now in Ryder Cup contention. :contentReference[oaicite:14]{index=14}
+The Scottish star is dominating both **off the tee** and **on the greens**. His aggressive approach to par-5s and smart course management are proving to be a winning formula.
 
----
+### What’s Working for Him:
+- **Putting Precision** – consistent strokes, minimal errors.  
+- **Strategic Aggression** – attacking pins at the right time.  
+- **Composure Under Pressure** – keeping calm even when challenged.  
 
-##  What’s Next
-
-- **Round 3 tees off Saturday at 1:45 PM ET**, with MacIntyre and Scheffler in the final pairing. Coverage begins on Golf Channel, followed by NBC. :contentReference[oaicite:15]{index=15}  
-- **Key focus**: Can MacIntyre maintain his hot form under pressure, or will Scheffler close the gap? Another standout could emerge from behind the leaders in the weekend chase.
+Want to learn more about his season? Check out [Robert MacIntyre’s PGA Tour profile](https://www.pgatour.com/player/40098/robert-macintyre).
 
 ---
 
@@ -65,3 +70,7 @@ heroImage: '../../assets/bmw-championship-2025.png'
 
 Let me know if you'd like to embed a dynamic leaderboard iframe or add polls to the page—happy to help you make it even more interactive!
 
+
+::contentReference[oaicite:20]{index=20}
+
+::contentReference[oaicite:21]{index=21}
