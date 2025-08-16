@@ -71,6 +71,3 @@ Want to learn more about his season? Check out [Robert MacIntyre’s PGA Tour pr
 Let me know if you'd like to embed a dynamic leaderboard iframe or add polls to the page—happy to help you make it even more interactive!
 
 
-::contentReference[oaicite:20]{index=20}
-
-::contentReference[oaicite:21]{index=21}

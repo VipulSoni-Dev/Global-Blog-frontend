@@ -91,7 +91,7 @@ const recent = posts.slice(1, 5);
         <div class="grid">
           {
             recent.map((post) => (
-              <article class="card">
+              <article class="card h-[450px] ">
                 <a class="thumb card-media" href={`/blog/${post.id}`}>
                   {post.data.heroImage ? (
                     <img
@@ -108,14 +108,14 @@ const recent = posts.slice(1, 5);
                   )}
                 </a>
                 <div class="card-body">
-                  <h3 class="card-title">
+                  <h3 class="card-title clamp-2">
                     <a href={`/blog/${post.id}`}>{post.data.title}</a>
                   </h3>
-                  <p class="card-desc">{post.data.description}</p>
+                  <p class="card-desc clamp-4">{post.data.description}</p>
                 </div>
-                <p class="card-date mt-auto text-sm">
-                  <FormattedDate date={post.data.pubDate} />
-                </p>
+                  <p class="card-date mt-auto text-sm ">
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
               </article>
             ))
           }

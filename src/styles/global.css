@@ -156,3 +156,10 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+.clamp-2, .clamp-3, .clamp-4 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.clamp-2 { -webkit-line-clamp: 2; }  /* title */
+.clamp-4 { -webkit-line-clamp: 4; } 
