@@ -1,4 +1,4 @@
-# Astro Starter Kit: Blog
+# How to start Global- Blog
 
 ```sh
 npm create astro@latest -- --template blog
