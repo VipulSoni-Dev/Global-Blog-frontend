@@ -1,0 +1,396 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+// Grab posts (expects the default Astro blog starter schema: title, description, pubDate, heroImage?)
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const featured = posts[0];
+const recent = posts.slice(1, 5);
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Global-Blog — Fresh perspectives, fast."
+      description="Global-Blog: crisp, fast, and focused writing on software, data, and the web."
+    />
+  </head>
+  <body>
+    <Header />
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <h1>Global-Blog</h1>
+        <p class="tagline">Fresh perspectives from around the world</p>
+        <div class="cta-row">
+          <a class="btn primary" href="/blog">Read the blog</a>
+          <a class="btn ghost" href="/about">About</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    {
+      featured && (
+        <section class="featured">
+          <div class="wrap">
+            <h2 class="section-title">Featured</h2>
+            <article class="featured-card">
+              <a class="cover self-center" href={`/blog/${featured.id}`}>
+                {featured.data.heroImage ? (
+                  <img
+                    src={featured.data.heroImage.src ?? featured.data.heroImage}
+                    alt={featured.data.title}
+                    loading="lazy"
+                  />
+                ) : (
+                  <img
+                    src="/assets/blog-placeholder-1.jpg"
+                    alt={featured.data.title}
+                    loading="lazy"
+                    width="320"
+                    height="200"
+                  />
+                )}
+              </a>
+
+              <div class="meta">
+                <h3>
+                  <a href={`/blog/${featured.id}`}>{featured.data.title}</a>
+                </h3>
+                <p class="desc">{featured.data.description}</p>
+                <p class="date">
+                  <FormattedDate date={featured.data.pubDate} />
+                </p>
+                <a class="btn small" href={`/blog/${featured.id}`}>
+                  Read article →
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- RECENT POSTS -->
+    <section class="recent">
+      <div class="wrap">
+        <h2 class="section-title">Latest posts</h2>
+        <div class="grid">
+          {
+            recent.map((post) => (
+              <article class="card">
+                <a class="thumb card-media"  href={`/blog/${post.id}`}>
+                  {post.data.heroImage ? (
+                    <img
+                      src={post.data.heroImage.src ?? post.data.heroImage}
+                      alt={post.data.title}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <img
+                      src="/assets/blog-placeholder-2.jpg"
+                      alt={post.data.title}
+                      loading="lazy"
+                    />
+                  )}
+                </a>
+                <div class="card-body">
+                  <h3 class="card-title">
+                    <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                  </h3>
+                  <p class="card-desc">{post.data.description}</p>
+                </div>
+                <p class="card-date mt-auto text-sm">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="more">
+          <a class="btn ghost" href="/blog">Browse all posts</a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+
+    <style>
+      :root {
+        --bg: #ffffff; /* Main page background */
+        --surface: #f9f9fb; /* Card / section background */
+        --line: #e5e7eb; /* Border / divider lines */
+        --text: #1f2937; /* Primary text color */
+        --muted: #6b7280; /* Muted / secondary text */
+        --brand: #000000; /* Brand / accent color (blue) */
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+      .hero {
+        padding: 3.5rem 0 2.5rem;
+        background: radial-gradient(
+            60rem 20rem at 20% -10%,
+            rgba(79, 140, 255, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(50rem 18rem at 80% -15%, rgba(111, 76, 255, 0.1), transparent 60%);
+        border-bottom: 1px solid var(--line);
+      }
+      .hero h1 {
+        font-size: clamp(2.2rem, 6vw, 3.25rem);
+        letter-spacing: 0.5px;
+        margin: 0 0 0.75rem;
+      }
+      .tagline {
+        color: var(--muted);
+        max-width: 60ch;
+        margin: 0 0 1.25rem;
+      }
+      .cta-row {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 1rem;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .btn.primary {
+        background: var(--brand);
+        color: #0b0d12;
+        border-color: transparent;
+        color: var(--line);
+      }
+      .btn.ghost {
+        color: var(--text);
+      }
+      .btn.small {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+        margin: 0 0 1rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .featured {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .featured-card {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 0.3fr 1fr;
+      }
+      .featured .cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+      }
+      .featured .meta {
+        padding: 0.5rem 0;
+      }
+      .featured .meta h3 {
+        margin: 0.2rem 0 0.4rem;
+        font-size: 1.6rem;
+      }
+      .featured .desc {
+        color: var(--muted);
+        margin: 0 0 0.6rem;
+      }
+      .featured .date {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0 0 0.8rem;
+      }
+
+      .featured .post-image {
+        width: 100%;
+        max-width: 320px; /* Prevents huge image in card */
+        height: auto;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+      .recent {
+        padding: 2rem 0;
+      }
+      .grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+      .thumb img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+        will-change: transform;
+      }
+      .card-body {
+        padding: 0.9rem;
+      }
+      .card-title {
+        margin: 0.2rem 0 0.4rem;
+        font-size: 1.05rem;
+        line-height: 1.35;
+      }
+      .card-desc {
+        color: var(--muted);
+        margin: 0 0 0.6rem;
+      }
+      .card-date {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-inline: auto;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+        border-color: #cbd5e1;
+      }
+      .card::after {
+        /* subtle glow ring */
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        pointer-events: none;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.18);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+      .card:hover::after {
+        opacity: 1;
+      }
+
+      /* .card-media {
+        display: block;
+        overflow: hidden;
+        border-radius: 16px 16px 0 0;
+      }
+      .card-media img {
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+        transition: transform 0.2s ease;
+      }
+      .card:hover .card-media img {
+        transform: scale(1.02);
+      } */
+
+      .more {
+        display: flex;
+        justify-content: center;
+        margin-top: 1.25rem;
+      }
+
+      @media (max-width: 860px) {
+        .featured-card {
+          grid-template-columns: 1fr;
+        }
+        .featured .cover img {
+          height: 240px;
+        }
+      }
+      /* @media (prefers-reduced-motion: reduce) {
+        .card,
+        .card * {
+          transition: none !important;
+          transform: none !important;
+        }
+      } */
+    </style>
+  </body>
+</html>
+
+<!-- ---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>🧑‍🚀 Hello, Astronaut!</h1>
+			<p>
+				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
+				template serves as a lightweight, minimally-styled starting point for anyone looking to build
+				a personal website, blog, or portfolio with Astro.
+			</p>
+			<p>
+				This template comes with a few integrations already configured in your
+				<code>astro.config.mjs</code> file. You can customize your setup with
+				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
+				React, or Vue to your project.
+			</p>
+			<p>Here are a few ideas on how to get started with the template:</p>
+			<ul>
+				<li>Edit this page in <code>src/pages/index.astro</code></li>
+				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
+				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
+				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
+				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
+			</ul>
+			<p>
+				Have fun! If you get stuck, remember to
+				<a href="https://docs.astro.build/">read the docs</a>
+				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
+			</p>
+			<p>
+				Looking for a blog template with a bit more personality? Check out
+				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
+				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html> -->
