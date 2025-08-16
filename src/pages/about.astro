@@ -1,13 +1,20 @@
 ---
+import Image from 'astro/components/Image.astro';
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
+const alt="Global Post"
+const img = {
+	src : AboutHeroImage,
+	alt
+}
+
 ---
 
 <Layout
   title="About Me"
   description="A reader-first blog exploring technology, personal growth, and finance—with clear explanations, practical takeaways, and visuals that make learning stick."
   pubDate={new Date('August 08 2021')}
-  heroImage={AboutHeroImage}
+  heroImage={img}
 >
 
 <p>
