@@ -1,6 +1,6 @@
 ---
 title: Tech Trends to Watch in 2025
-blogName: 'first-post'
+blogName: 'Tech Trends to Watch in 2025'
 description: From AI-powered coding assistants to quantum breakthroughs, here’s what’s shaping the tech landscape in 2025.
 pubDate: 2025-08-15T13:30:00+05:30
 tags: [technology, AI, future]
