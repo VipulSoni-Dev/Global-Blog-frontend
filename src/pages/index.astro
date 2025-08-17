@@ -66,6 +66,7 @@ const recent = posts.slice(1, 5);
                     src={featured.data.heroImage.src ?? featured.data.heroImage}
                     alt={featured.data.title}
                     loading="lazy"
+                    inferSize="true"
                   />
                 ) : (
                   <img
