@@ -5,7 +5,10 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
   <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
+    <h2 class="brand">
+  		<a href="/">{SITE_TITLE} <span class="tagline">— Fresh perspectives, fast.</span></a>
+    </h2>
+
     <!-- Hamburger -->
     <button class="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
       ☰
@@ -52,6 +55,12 @@ import HeaderLink from './HeaderLink.astro';
     </div>
   </nav>
 </header>
+
+<script>
+  const hd = document.querySelector('header');
+  const onScroll = () => hd && hd.classList.toggle('is-stuck', window.scrollY > 12);
+  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+</script>
 
 <script>
   const btn = document.querySelector('.hamburger');
@@ -135,7 +144,7 @@ import HeaderLink from './HeaderLink.astro';
     }
   }
 
-  /* mobile css */
+  /*======================================== mobile css ===============================*/
 /* Base layout */
 .nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem}
 .brand a{font-weight:700;text-decoration:none}
@@ -191,6 +200,69 @@ import HeaderLink from './HeaderLink.astro';
 @media (prefers-reduced-motion: reduce){
   .menu, .backdrop{transition:none}
 }
+
+@media (max-width: 480px) {
+  header .site-title span.tagline {
+    display: none;
+  }
+}
+
+:root{
+  --header-h: 56px;          /* mobile header height */
+  --header-h-lg: 72px;       /* desktop header height */
+  --pad-x: 14px;             /* horizontal padding */
+  --ring: 0 1px 0 rgba(0,0,0,.06);      /* bottom divider */
+  --shadow: 0 6px 24px rgba(0,0,0,.06); /* sticky shadow */
+}
+
+/* Header wrapper */
+header{
+  position: sticky; top: 0; z-index: 100;
+  background:#fff;
+  box-shadow: var(--ring);
+  padding: 0; /* height handled on .nav */
+}
+
+/* Main bar */
+.nav{
+  min-height: var(--header-h);
+  display:flex; align-items:center; justify-content:space-between;
+  padding-inline: var(--pad-x);
+  gap: .75rem;
+}
+
+/* Brand: single line on mobile, no wrap */
+.brand{ margin:0; line-height:1; }
+.brand a{
+  display:block;
+  font-weight: 800;
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
+  text-decoration:none; color:#111;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: calc(100vw - 160px); /* prevent collision with hamburger */
+}
+
+/* Hamburger: comfy 44px target, visually ~24–28px icon */
+.hamburger{
+  background:transparent; border:0; color:#111;
+  width:44px; height:44px; border-radius:10px;
+  font-size: 22px; line-height:1; display:grid; place-items:center;
+}
+.hamburger:focus-visible{ outline: 2px solid #4f46e5; outline-offset:2px; }
+.hamburger:hover{ background:#f5f6f8; }
+
+/* Hide social icons on small screens */
+@media (max-width: 767px){ .social-links{ display:none; } }
+
+/* Desktop size bumps */
+@media (min-width: 768px){
+  .nav{ min-height: var(--header-h-lg); padding-inline: 24px; }
+  .brand a{ font-size: clamp(1.1rem, 1.2vw, 1.35rem); max-width: none; }
+  .hamburger{ display:none; }
+}
+
+/* When page scrolls a bit, add a soft shadow to separate from content (optional) */
+@supports (backdrop-filter: blur(6px)){
 
 
 
