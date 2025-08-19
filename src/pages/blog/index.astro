@@ -102,7 +102,7 @@ const posts = (await getCollection('blog')).sort(
                       src={post.data.heroImage.src}
                       alt={post.data.heroImage.alt}
                       loading="lazy"
-                      inferSize="true"
+                      inferSize={true}
                     />
                   )}
                   <h4 class="title">{post.data.title}</h4>

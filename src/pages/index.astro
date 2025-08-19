@@ -66,11 +66,11 @@ const recent = posts.slice(1, 5);
                     src={featured.data.heroImage.src ?? featured.data.heroImage}
                     alt={featured.data.title}
                     loading="lazy"
-                    inferSize="true"
+                    inferSize={true}
                   />
                 ) : (
                   <img
-                    src="/assets/blog-placeholder-1.jpg"
+                    src="../../assets/blog-placeholder-1.jpg"
                     alt={featured.data.title}
                     loading="lazy"
                     width="320"
@@ -111,6 +111,7 @@ const recent = posts.slice(1, 5);
                       src={post.data.heroImage.src ?? post.data.heroImage}
                       alt={post.data.title}
                       loading="lazy"
+                      inferSize={true}
                     />
                   ) : (
                     <img
