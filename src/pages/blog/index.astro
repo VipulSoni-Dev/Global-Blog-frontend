@@ -47,8 +47,14 @@ const posts = (await getCollection('blog')).sort(
         font-size: 2.369rem;
       }
       ul li img {
-        margin-bottom: 0.5rem;
+        /* margin-bottom: 0.5rem;
+          border-radius: 12px;
+          min-height: 309.33px; */
+        aspect-ratio: 16 / 9; /* keeps consistent height/width ratio */
+        object-fit: initial; /* crops if needed */
+        width: 100%;
         border-radius: 12px;
+        margin-bottom: 0.5rem;
       }
       ul li a {
         display: block;
@@ -119,3 +125,147 @@ const posts = (await getCollection('blog')).sort(
     <Footer />
   </body>
 </html>
+
+<!-- new layout -->
+<!-- 
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      /* Page container */
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1rem 3rem;
+      }
+
+      /* === Blog grid & card system (pure CSS) === */
+      .blog-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      /* standard card spans 6 cols (2 per row on desktop), 12 on mobile */
+      .blog-card {
+        grid-column: span 6;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        transition: box-shadow 0.2s ease;
+      }
+      .blog-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+      .blog-card a { color: inherit; text-decoration: none; }
+
+      /* Make the first card "hero" on xl screens */
+      .blog-card--hero {
+        grid-column: span 12;
+      }
+
+      /* Thumbnail with fixed aspect so heights are consistent */
+      .blog-thumb {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        background: #f3f3f3;
+        overflow: hidden;
+      }
+      .blog-thumb--hero {
+        aspect-ratio: 21 / 9;
+      }
+      .blog-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        display: block;
+      }
+      .blog-card:hover .blog-img { transform: scale(1.03); }
+
+      /* Body */
+      .blog-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 1.25rem;
+        gap: .5rem;
+      }
+
+      /* Title */
+      .blog-title {
+        margin: .25rem 0 0 0;
+        font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+        font-weight: 700;
+        color: rgb(var(--black));
+        line-height: 1.2;
+      }
+      .blog-card:hover .blog-title { color: rgb(var(--accent)); }
+
+      /* Meta (date) pinned at bottom */
+      .blog-meta {
+        margin-top: auto;            /* 👈 keeps date at the bottom */
+        padding-top: .75rem;
+        font-size: .95rem;
+        color: rgb(var(--gray));
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .blog-card, .blog-card--hero { grid-column: span 12; }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="blog-grid">
+        {
+          posts.map((post, i) => (
+            <article class={`blog-card ${i === 0 ? 'blog-card--hero' : ''}`}>
+              <a href={`/blog/${post.id}/`}>
+                <div class={`blog-thumb ${i === 0 ? 'blog-thumb--hero' : ''}`}>
+                  {post.data.heroImage && (
+                    <Image
+                      class="blog-img"
+                      width={i === 0 ? 1440 : 720}
+                      height={i === 0 ? 620 : 405}
+                      src={post.data.heroImage.src}
+                      alt={post.data.heroImage.alt}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      inferSize
+                    />
+                  )}
+                </div>
+                <div class="blog-body">
+                  <h2 class="blog-title">{post.data.title}</h2>
+                  <div class="blog-meta">
+                    <FormattedDate date={post.data.pubDate} />
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))
+        }
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html> -->
