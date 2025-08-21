@@ -1,8 +1,8 @@
 ---
-import Image from 'astro/components/Image.astro';
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
-const alt = 'Global Post';
+import Image from "astro/components/Image.astro";
+import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
+import Layout from "../layouts/BlogPost.astro";
+const alt = "Global Post";
 const img = {
   src: AboutHeroImage,
   alt,
@@ -12,11 +12,22 @@ const img = {
 <Layout
   title="About Me"
   description="A reader-first blog exploring technology, personal growth, and finance—with clear explanations, practical takeaways, and visuals that make learning stick."
-  pubDate={new Date('August 08 2021')}
+  pubDate={new Date()}
   heroImage={img}
-  tags={['global blog','global blog space','latest news 2025','trending news India','finance blog India','stock market tips','option selling strategy',
-  		'nifty and bank nifty analysis','investment ideas 2025','AI news and trends','technology updates 2025','daily weather alerts India',
-		'severe rainfall alerts','global trending topics','educational finance blog']}
+  tags={[
+    "global blog",
+    "global blog space",
+    "global trending topics",
+    "latest news 2025",
+    "trending news",
+    "finance blog",
+    "daily weather alerts",
+    "investment ideas 2025",
+    "AI news and trends",
+    "technology updates 2025",
+    "severe rainfall alerts",
+    "educational finance blog",
+  ]}
 >
   <p>
     Welcome to my corner of the internet — a blog dedicated to exploring ideas, breaking down
@@ -85,4 +96,4 @@ const img = {
 
   <h2>Stay connected</h2>
   <p>If you find value here, consider subscribing to the newsletter for fresh</p>
-  </Layout>
+</Layout>
