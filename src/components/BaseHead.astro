@@ -21,7 +21,19 @@ const { title, description, image = FallbackImage , tags} = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Apple / iOS -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Global Blog Space">
+
+<!-- Pinned tab (Safari) -->
+<link rel="mask-icon" href="/favicon.svg" color="#F15A2A">
+
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"
@@ -29,6 +41,11 @@ const { title, description, image = FallbackImage , tags} = Astro.props;
 	title={SITE_TITLE}
 	href={new URL('rss.xml', Astro.site)}
 />
+
+<!-- App / Theme names -->
+<meta name="application-name" content="Global Blog Space">
+<meta name="theme-color" content="#F15A2A">
+
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
