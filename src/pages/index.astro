@@ -1,20 +1,21 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { getCollection } from 'astro:content';
-import Image from 'astro/components/Image.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { getCollection } from "astro:content";
+import Image from "astro/components/Image.astro";
 
 // Grab posts (expects the default Astro blog starter schema: title, description, pubDate, heroImage?)
-const posts = (await getCollection('blog')).sort((a, b) => {
+const posts = (await getCollection("blog")).sort((a, b) => {
   const at = new Date(a.data.pubDate).getTime();
   const bt = new Date(b.data.pubDate).getTime();
   if (bt !== at) return bt - at;
   // tie-breaker so order is stable across environments
   return a.id.localeCompare(b.id);
 });
+import siteImage from "../../public/favicon.png";
 
 const featured = posts[0];
 const recent = posts.slice(1, 5);
@@ -22,41 +23,25 @@ const recent = posts.slice(1, 5);
 
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEFW6FEXEW"></script>
-    <script>
-       // @ts-ignore 
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-         // @ts-ignore 
-        dataLayer.push(arguments);
-      }
-       // @ts-ignore 
-      gtag('js', new Date());
-       // @ts-ignore 
-      gtag('config', 'G-PEFW6FEXEW');
-    </script>
-
     <BaseHead
       title="Global Blog Space — Fresh perspectives, fast."
       description="Welcome to Global Blog Space – a hub where bloggers share stories, ideas, and knowledge without boundaries."
       tags={[
-        'global blog',
-        'global blog space',
-        'latest news 2025',
-        'trending news India',
-        'finance blog India',
-        'stock market tips',
-        'option selling strategy',
-        'nifty and bank nifty analysis',
-        'investment ideas 2025',
-        'AI news and trends',
-        'technology updates 2025',
-        'daily weather alerts India',
-        'severe rainfall alerts',
-        'global trending topics',
-        'educational finance blog',
+        "global blog",
+        "global blog space",
+        "global trending topics",
+        "latest news 2025",
+        "trending news",
+        "finance blog",
+        "daily weather alerts",
+        "investment ideas 2025",
+        "AI news and trends",
+        "technology updates 2025",
+        "severe rainfall alerts",
+        "educational finance blog",
       ]}
+      image={siteImage}
+      pubDate={new Date()}
     />
   </head>
   <body>
@@ -184,11 +169,8 @@ const recent = posts.slice(1, 5);
       }
       .hero {
         padding: 3.5rem 0 2.5rem;
-        background: radial-gradient(
-            60rem 20rem at 20% -10%,
-            rgba(79, 140, 255, 0.12),
-            transparent 60%
-          ),
+        background:
+          radial-gradient(60rem 20rem at 20% -10%, rgba(79, 140, 255, 0.12), transparent 60%),
           radial-gradient(50rem 18rem at 80% -15%, rgba(111, 76, 255, 0.1), transparent 60%);
         border-bottom: 1px solid var(--line);
       }
@@ -331,7 +313,7 @@ const recent = posts.slice(1, 5);
       }
       .card::after {
         /* subtle glow ring */
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         border-radius: 16px;

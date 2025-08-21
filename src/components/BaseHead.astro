@@ -1,50 +1,93 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
-import type { ImageMetadata } from 'astro';
-import FallbackImage from '../assets/blog-placeholder-1.jpg';
-import { SITE_TITLE } from '../consts';
+import "../styles/global.css";
+import type { ImageMetadata } from "astro";
+import FallbackImage from "../../public/favicon.png";
+import { SITE_TITLE } from "../consts";
 
 interface Props {
-	title: string;
-	description: string;
-	image?: ImageMetadata;
-	tags:string[];
+  title: string;
+  description: string;
+  image?: ImageMetadata;
+  tags: string[];
+  pubDate: Date;
+  updatedDate?: Date;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage , tags} = Astro.props;
+const { title, description, image = FallbackImage, tags, pubDate, updatedDate } = Astro.props;
+
+const ldJson = () => {
+  const social = new URL(image.src, Astro.site).href;
+  const url = new URL("/blog/ai-note-taking-productivity-2025", Astro.site).href;
+
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": title,
+    "description": description,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": url },
+    "image": { "@type": "ImageObject", "url": social, "width": image.width, "height": image.height },
+    "author": { "@type": "Person", "name": "Global Blog Space", "url": "https://globalblog.space/about" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Global Blog Space",
+      "logo": { "@type": "ImageObject", "url": "https://globalblog.space/android-chrome-512x512.png", "width": 512, "height": 512 },
+    },
+    "datePublished": pubDate,
+    "dateModified": updatedDate ? updatedDate : pubDate,
+    "inLanguage": "en",
+    "keywords": tags,
+  };
+  return JSON.stringify(ld).replace(/</g, '\\u003c'); 
+};
+
+const result = ldJson()
 ---
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PEFW6FEXEW" is:inline></script>
+<script>
+// @ts-ignore
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+// @ts-ignore
+dataLayer.push(arguments);
+}
+// @ts-ignore
+gtag("js", new Date());
+// @ts-ignore
+gtag("config", "G-PEFW6FEXEW");
+</script>
+
+
+
+<script type="application/ld+json" is:inline set:html={result}></script>
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <!-- Apple / iOS -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-title" content="Global Blog Space">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="Global Blog Space" />
 
 <!-- Pinned tab (Safari) -->
-<link rel="mask-icon" href="/favicon.svg" color="#F15A2A">
+<link rel="mask-icon" href="/favicon.svg" color="#F15A2A" />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
-<link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL('rss.xml', Astro.site)}
-/>
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL("rss.xml", Astro.site)} />
 
 <!-- App / Theme names -->
-<meta name="application-name" content="Global Blog Space">
-<meta name="theme-color" content="#F15A2A">
+<meta name="application-name" content="Global Blog Space" />
+<meta name="theme-color" content="#F15A2A" />
 
 <meta name="generator" content={Astro.generator} />
 
@@ -75,4 +118,5 @@ const { title, description, image = FallbackImage , tags} = Astro.props;
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
 
 <!-- tags -->
-<meta name="keywords" content={(tags ?? []).join(', ')} />
+<meta name="keywords" content={tags.toString()} />
+
