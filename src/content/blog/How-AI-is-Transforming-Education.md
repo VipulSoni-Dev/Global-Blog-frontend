@@ -216,13 +216,13 @@ Even simple RAG materially reduces hallucinations and keeps outputs aligned to y
 
 ## Quick Checklist
 
-- [ ] Publish AI Use Policy & family communication  
-- [ ] Choose baseline toolset (copilot + LMS + subject tutor)  
-- [ ] Train staff and students (AI literacy module)  
-- [ ] Ground models in your syllabus/readings  
-- [ ] Redesign at least one assessment per course  
-- [ ] Track outcomes, time saved, and integrity metrics  
-- [ ] Review equity & accessibility monthly
+[✓] Publish AI Use Policy & family communication  
+[✓] Choose baseline toolset (copilot + LMS + subject tutor)  
+[✓] Train staff and students (AI literacy module)  
+[✓] Ground models in your syllabus/readings  
+[✓] Redesign at least one assessment per course  
+[✓] Track outcomes, time saved, and integrity metrics  
+[✓] Review equity & accessibility monthly
 
 ---
 
