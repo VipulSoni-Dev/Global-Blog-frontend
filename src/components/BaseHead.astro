@@ -20,16 +20,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = FallbackImage, tags, pubDate, updatedDate } = Astro.props;
 
 const ldJson = () => {
-  const social = new URL(image.src, Astro.site).href;
-  const url = new URL("/blog/ai-note-taking-productivity-2025", Astro.site).href;
-
+  const social = image.src !== undefined ? new URL(image.src, Astro.site).href : image;
   const ld = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": title,
     "description": description,
-    "mainEntityOfPage": { "@type": "WebPage", "@id": url },
-    "image": { "@type": "ImageObject", "url": social, "width": image.width, "height": image.height },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": canonicalURL },
+    "image": { "@type": "ImageObject", "url": social, "width": image.width ? image.width : 1536, "height": image.height ? image.height : 1024 },
     "author": { "@type": "Person", "name": "Global Blog Space", "url": "https://globalblog.space/about" },
     "publisher": {
       "@type": "Organization",
@@ -41,30 +39,29 @@ const ldJson = () => {
     "inLanguage": "en",
     "keywords": tags,
   };
-  return JSON.stringify(ld).replace(/</g, '\\u003c'); 
+  // return JSON.stringify(ld).replace(/</g, "\\u003c");
+  return JSON.stringify(ld);
 };
 
-const result = ldJson()
+const result = ldJson();
 ---
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PEFW6FEXEW" is:inline></script>
 <script>
-// @ts-ignore
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-// @ts-ignore
-dataLayer.push(arguments);
-}
-// @ts-ignore
-gtag("js", new Date());
-// @ts-ignore
-gtag("config", "G-PEFW6FEXEW");
+  // @ts-ignore
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    // @ts-ignore
+    dataLayer.push(arguments);
+  }
+  // @ts-ignore
+  gtag("js", new Date());
+  // @ts-ignore
+  gtag("config", "G-PEFW6FEXEW");
 </script>
 
-
-
-<script type="application/ld+json" is:inline set:html={result}></script>
+<script type="application/ld+json" is:inline set:html={result} />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
@@ -119,4 +116,3 @@ gtag("config", "G-PEFW6FEXEW");
 
 <!-- tags -->
 <meta name="keywords" content={tags.toString()} />
-
