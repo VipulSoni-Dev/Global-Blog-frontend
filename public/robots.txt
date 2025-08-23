@@ -5,11 +5,6 @@
 # artificial intelligence retrieval augmented generation or (2) with express
 # written permission from this site’s operator.
 
-# BEGIN Cloudflare Managed content
-
-
-# END Cloudflare Managed Content
-
 # Allow all standard search engines
 User-agent: *
 Allow: /
