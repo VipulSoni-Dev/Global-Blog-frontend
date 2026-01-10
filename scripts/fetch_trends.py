@@ -35,7 +35,16 @@ RETRY_DELAY = 3  # seconds
 
 
 def fetch_trends_for_regions(regions):
-    pytrends = TrendReq(hl="en-US", tz=0)
+    # Use a browser-like User-Agent to reduce the likelihood of Google returning
+    # 404s or blocking automated clients. `requests_args` is passed to the
+    # underlying requests.Session used by pytrends.
+    REQUESTS_HEADERS = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        )
+    }
+    pytrends = TrendReq(hl="en-US", tz=0, requests_args={"headers": REQUESTS_HEADERS})
     results = {}
     for code, pn in regions.items():
         last_exc = None
@@ -49,13 +58,38 @@ def fetch_trends_for_regions(regions):
                 break
             except Exception as exc:
                 last_exc = exc
-                LOG.warning("Attempt %d failed for %s (%s): %s", attempt, code, pn, exc)
+                # If the exception has an HTTP response, log detailed info
+                extra = ""
+                try:
+                    resp = getattr(exc, 'response', None)
+                    if resp is not None:
+                        extra = f" (status={getattr(resp, 'status_code', 'n/a')} body={getattr(resp, 'text', '')[:200]})"
+                except Exception:
+                    extra = ""
+                LOG.warning("Attempt %d failed for %s (%s): %s%s", attempt, code, pn, exc, extra)
                 if attempt < MAX_RETRIES:
                     time.sleep(RETRY_DELAY)
                 else:
                     # All attempts failed
                     LOG.error("All %d attempts failed for %s (%s). Last error: %s", MAX_RETRIES, code, pn, last_exc)
-                    results[code] = {"pn": pn, "error": str(last_exc), "trends": []}
+                    # Try a small set of fallback 'pn' variants when Google returns 404
+                    fallbacks = [code.lower(), pn]
+                    fallback_success = False
+                    for alt in fallbacks:
+                        if alt == pn:
+                            continue
+                        try:
+                            LOG.info("Trying fallback pn '%s' for %s", alt, code)
+                            df = pytrends.trending_searches(pn=alt)
+                            trends = df.iloc[:, 0].dropna().astype(str).tolist()
+                            results[code] = {"pn": alt, "trends": trends}
+                            fallback_success = True
+                            LOG.info("Fallback succeeded for %s using pn=%s", code, alt)
+                            break
+                        except Exception as exc2:
+                            LOG.warning("Fallback pn '%s' failed for %s: %s", alt, code, exc2)
+                    if not fallback_success:
+                        results[code] = {"pn": pn, "error": str(last_exc), "trends": []}
                     break
     return results
 
