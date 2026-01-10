@@ -98,3 +98,38 @@ Notes & operational tips
 - If the LLM fabricates specific numeric data, mark it as an estimate and prefer phrasing like "estimated" or "reported".
 - For debatable policy topics, avoid legal advice — recommend consultation with experts.
 - Use `mustInclude` to force inclusion of facts or sources.
+
+## Writing Frameworks (choose one per draft)
+Below are five proven frameworks the writer/LLM can use to structure posts. When calling the LLM, include a `framework` field in the input JSON and one-line instruction: `Use the <FRAMEWORK> framework`.
+
+1. The "H-I-P" Framework (For High Engagement)
+  - Hook: Start with a bold statement, a surprising statistic, or a relatable question.
+  - Insight: Explain the "Why." Describe the problem or the value for the reader.
+  - Promise: Explicitly state what the reader will learn by the end of the post.
+
+2. The "Listicle" Framework (For Scannability)
+  - Introduction: Define the topic and why these items matter.
+  - The List: Use Subheaders (H2/H3) for each item; keep formatting consistent.
+  - The "Best" Pick: Optionally highlight one standout item.
+  - Conclusion: Summarize the key takeaway.
+
+3. The "PAS" Framework (For Persuasion/Marketing)
+  - Problem: Describe a pain point the reader is experiencing.
+  - Agitation: Explain the consequences of not solving it.
+  - Solution: Present the recommended fix or product as the answer.
+
+4. The Hub-and-Spoke (For SEO Authority)
+  - Hub: Provide an overview of a broad topic (the pillar page).
+  - Spokes: Break the topic into standalone sub-sections that can be individual posts.
+  - Internal Links: Ensure each spoke links back to the hub.
+
+5. The "Three-Act" Story (For Personal/Thought Leadership)
+  - The Setup: Where were you before? Describe the status quo.
+  - The Confrontation: What challenge or turning point occurred?
+  - The Resolution: How you resolved it and the lesson for readers.
+
+Pro-Tips for any framework
+- The 1-2-3 Rule: No more than 1 idea per paragraph, ≤2 sentences per point, and use 3 media types across the article (text, images, lists).
+- The "So What?" Test: After every section ask "So what?" — if it doesn't add value, cut it.
+
+When generating drafts, include `framework` and `outlineHints` in the JSON to guide structure and tone.

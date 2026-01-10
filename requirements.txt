@@ -1,2 +1,4 @@
 pytrends
 requests
+google-genai
+Pillow

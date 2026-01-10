@@ -9,6 +9,7 @@ Regions and their pytrends 'pn' identifiers can be adjusted in REGIONS.
 import json
 import os
 import logging
+import time
 from datetime import datetime, timezone
 
 try:
@@ -28,21 +29,34 @@ REGIONS = {
 }
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "trends")
+# Retry configuration for transient failures when fetching trends
+MAX_RETRIES = 5
+RETRY_DELAY = 3  # seconds
 
 
 def fetch_trends_for_regions(regions):
     pytrends = TrendReq(hl="en-US", tz=0)
     results = {}
     for code, pn in regions.items():
-        try:
-            LOG.info("Fetching trending searches for %s (%s)", code, pn)
-            df = pytrends.trending_searches(pn=pn)
-            # `trending_searches` returns a DataFrame with one column of queries
-            trends = df.iloc[:, 0].dropna().astype(str).tolist()
-            results[code] = {"pn": pn, "trends": trends}
-        except Exception as exc:
-            LOG.exception("Failed to fetch trends for %s (%s): %s", code, pn, exc)
-            results[code] = {"pn": pn, "error": str(exc), "trends": []}
+        last_exc = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                LOG.info("Fetching trending searches for %s (%s) — attempt %d/%d", code, pn, attempt, MAX_RETRIES)
+                df = pytrends.trending_searches(pn=pn)
+                # `trending_searches` returns a DataFrame with one column of queries
+                trends = df.iloc[:, 0].dropna().astype(str).tolist()
+                results[code] = {"pn": pn, "trends": trends}
+                break
+            except Exception as exc:
+                last_exc = exc
+                LOG.warning("Attempt %d failed for %s (%s): %s", attempt, code, pn, exc)
+                if attempt < MAX_RETRIES:
+                    time.sleep(RETRY_DELAY)
+                else:
+                    # All attempts failed
+                    LOG.error("All %d attempts failed for %s (%s). Last error: %s", MAX_RETRIES, code, pn, last_exc)
+                    results[code] = {"pn": pn, "error": str(last_exc), "trends": []}
+                    break
     return results
 
 
