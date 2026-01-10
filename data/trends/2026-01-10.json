@@ -1,0 +1,26 @@
+{
+  "fetched_at": "2026-01-10T19:29:52.912247+00:00",
+  "date": "2026-01-10",
+  "regions": {
+    "US": {
+      "pn": "united_states",
+      "error": "The request failed: Google returned a response with code 404",
+      "trends": []
+    },
+    "UK": {
+      "pn": "united_kingdom",
+      "error": "The request failed: Google returned a response with code 404",
+      "trends": []
+    },
+    "UAE": {
+      "pn": "united_arab_emirates",
+      "error": "The request failed: Google returned a response with code 404",
+      "trends": []
+    },
+    "EU": {
+      "pn": "europe",
+      "error": "The request failed: Google returned a response with code 404",
+      "trends": []
+    }
+  }
+}
