@@ -150,18 +150,7 @@ const recent = posts.slice(1, 5);
     <Footer />
 
     <style>
-      :root {
-        --bg: #ffffff; /* Main page background */
-        --surface: #f9f9fb; /* Card / section background */
-        --line: #e5e7eb; /* Border / divider lines */
-        --text: #1f2937; /* Primary text color */
-        --muted: #6b7280; /* Muted / secondary text */
-        --brand: #000000; /* Brand / accent color (blue) */
-      }
-      body {
-        background: var(--bg);
-        color: var(--text);
-      }
+      /* Page uses global theme tokens (no local :root overrides) */
       .wrap {
         max-width: 1100px;
         margin: 0 auto;
@@ -201,10 +190,10 @@ const recent = posts.slice(1, 5);
         font-weight: 600;
       }
       .btn.primary {
-        background: var(--brand);
-        color: #0b0d12;
+        /* Use darker accent for better contrast in dark mode */
+        background: var(--accent-dark);
+        color: #ffffff;
         border-color: transparent;
-        color: var(--line);
       }
       .btn.ghost {
         color: var(--text);
@@ -212,6 +201,21 @@ const recent = posts.slice(1, 5);
       .btn.small {
         padding: 0.5rem 0.75rem;
         font-size: 0.9rem;
+      }
+      /* Light-theme specific button appearance to match reference */
+      html:not([data-theme='dark']) .btn.primary {
+        background: #000000;
+        color: #ffffff;
+        border-color: transparent;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        padding: .7rem 1rem;
+        border-radius: 14px;
+      }
+      html:not([data-theme='dark']) .btn.ghost {
+        background: #ffffff;
+        color: var(--text);
+        border: 1px solid var(--line);
+        box-shadow: 0 1px 0 rgba(0,0,0,0.03);
       }
 
       .section-title {
